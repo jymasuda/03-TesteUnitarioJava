@@ -106,6 +106,13 @@ class ContaTest {
         assertEquals(100, conta.getSaldo());
     }
 
+    @Test
+    void depositar_ValorZero_LancaIllegalArgumentException(){
+        var conta = new Conta("João");
+
+        assertThrows(IllegalArgumentException.class, () -> conta.depositar(0));
+    }
+
     // =======================================================
     //  Testes para sacar
     //  Sugestão de testes:
