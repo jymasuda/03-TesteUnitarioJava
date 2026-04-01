@@ -53,6 +53,8 @@ public class Conta {
      *   - O saldo deve ser atualizado corretamente.
      */
     public void depositar(double valor) {
+        if(valor == 0)
+            throw new IllegalArgumentException("O valor do deposito não pode ser zero.");
         this.saldo += valor;
     }
 

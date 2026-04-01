@@ -92,8 +92,6 @@ class ContaTest {
     // =======================================================
     //  Testes para depositar
     //  Sugestão de testes:
-    //    - Depósito com valor válido atualiza o saldo
-    //    - Depósito com valor zero lança IllegalArgumentException
     //    - Depósito com valor negativo lança IllegalArgumentException
     //    - Depósito em conta inativa lança IllegalStateException
     // =======================================================
