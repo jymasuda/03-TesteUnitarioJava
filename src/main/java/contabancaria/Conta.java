@@ -89,6 +89,8 @@ public class Conta {
     public void transferir(Conta destino, double valor) {
         if(valor == 0)
             throw new IllegalArgumentException("Valor da transferencia não pode ser zero");
+        if(valor < 0)
+            throw new IllegalArgumentException("Valor da transferencia não pode ser menor que zero");
         if(this.saldo < valor)
             throw new IllegalStateException("Saldo insuficiente");
         this.saldo -= valor;
