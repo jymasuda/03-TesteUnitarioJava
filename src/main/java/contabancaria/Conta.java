@@ -105,6 +105,8 @@ public class Conta {
      *   - A propriedade ativa deve ser alterada para false.
      */
     public void encerrar() {
+        if(!this.isAtiva())
+            throw new IllegalStateException("Conta já foi encerrada.");
         if(this.saldo > 0)
             throw new IllegalStateException("Contas com saldo não podem ser encerradas");
         this.ativa = false;
