@@ -196,6 +196,14 @@ class ContaTest {
 
         assertThrows(IllegalArgumentException.class, () -> de.transferir(para, 0));
     }
+
+    @Test
+    void transferir_valorNegativo_lancaIllegalArgumentException(){
+        var de = new Conta("João", 100.00);
+        var para = new Conta("Maria");
+
+        assertThrows(IllegalArgumentException.class, () -> de.transferir(para, -100));
+    }
     // =======================================================
     //  Testes para encerrar
     //  Sugestão de testes:
