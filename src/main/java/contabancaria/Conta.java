@@ -69,6 +69,8 @@ public class Conta {
      *   - O saldo deve ser atualizado corretamente.
      */
     public void sacar(double valor) {
+        if(!this.isAtiva())
+            throw new IllegalStateException("Saques não podem ser feitos em contas inativas");
         if(valor <= 0)
             throw new IllegalArgumentException("O valor do saque não deve ser menos ou igual a zero");
         if(valor > this.saldo)
