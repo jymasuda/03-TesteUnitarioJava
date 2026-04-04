@@ -240,6 +240,7 @@ class ContaTest {
     void encerrar_contaEncerrada_lancaIllegalStateException(){
         var conta = new Conta("João");
         conta.encerrar();
+        
         assertThrows(IllegalStateException.class, () -> conta.encerrar());
     }
 }
