@@ -55,6 +55,8 @@ public class Conta {
     public void depositar(double valor) {
         if(valor == 0)
             throw new IllegalArgumentException("O valor do deposito não pode ser zero.");
+        if(valor < 0)
+            throw new IllegalArgumentException("O valor do deposito não pode ser negativo");
         this.saldo += valor;
     }
 
