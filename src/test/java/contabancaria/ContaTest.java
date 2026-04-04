@@ -239,4 +239,11 @@ class ContaTest {
         
         assertThrows(IllegalStateException.class, () -> conta.encerrar());
     }
+
+     @Test
+    void encerrar_contaEncerrada_lancaIllegalStateException(){
+        var conta = new Conta("João", 100);
+        conta.encerrar();
+        assertThrows(IllegalStateException.class, () -> conta.encerrar());
+    }
 }
