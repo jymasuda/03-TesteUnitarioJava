@@ -1,6 +1,7 @@
 package contabancaria;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
@@ -165,9 +166,6 @@ class ContaTest {
     }
     // =======================================================
     //  Testes para transferir
-    //  Sugestão de testes:
-    //    - Transferência com conta origem inativa lança exceção
-    //    - Transferência com conta destino inativa lança exceção
     // =======================================================
     @Test
     void transferir_transferenciaValida_atualizaSaldoContas(){
@@ -217,7 +215,7 @@ class ContaTest {
         var de = new Conta("João");
         var para = new Conta("Maria");
         para.encerrar();
-        
+
         assertThrows(IllegalStateException.class, () -> de.transferir(para, 1000));
     }
     // =======================================================
@@ -228,5 +226,10 @@ class ContaTest {
     //    - Encerrar conta já inativa lança IllegalStateException
     //    - Conta encerrada tem isAtiva() == false
     // =======================================================
-
+    @Test
+    void encerrar_saldoZero_encerraConta(){
+        var conta = new Conta("João");
+        
+        assertFalse(conta.isAtiva());
+    }
 }
