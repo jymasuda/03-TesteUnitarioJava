@@ -69,8 +69,9 @@ public class Conta {
      *   - O saldo deve ser atualizado corretamente.
      */
     public void sacar(double valor) {
-        if(valor <= this.saldo)
-            saldo -= valor;
+        if(valor > this.saldo)
+            throw new IllegalStateException("O saldo não pode ser menor que valor a sacar");
+        this.saldo -= valor;
     }
 
     /**
