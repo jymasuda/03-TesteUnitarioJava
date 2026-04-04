@@ -116,11 +116,11 @@ class ContaTest {
     }
 
     @Test
-    void depositar_contaInativa_LancaIllegalArgumentException(){
+    void depositar_contaInativa_LancaIllegalStateException(){
         var conta = new Conta("João");
         conta.encerrar();
 
-        assertThrows(IllegalArgumentException.class, () -> conta.depositar(10));
+        assertThrows(IllegalStateException.class, () -> conta.depositar(10));
     }
 
     // =======================================================
@@ -139,6 +139,13 @@ class ContaTest {
 
         conta.sacar(10.00);
         assertEquals(90, conta.getSaldo());
+    }
+
+    @Test
+    void sacar_valorMaiorQueSaldo_lancaIllegalStateException(){
+        var conta = new Conta("João", 100.00);
+
+        assertThrows(IllegalStateException.class, () -> conta.sacar(1000));
     }
     // =======================================================
     //  Testes para transferir

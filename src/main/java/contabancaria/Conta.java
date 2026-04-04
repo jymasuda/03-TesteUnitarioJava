@@ -56,7 +56,7 @@ public class Conta {
         if(valor <= 0)
             throw new IllegalArgumentException("O valor do deposito deve ser maior que 0");
         if(!this.isAtiva())
-            throw new IllegalArgumentException("Depositos não podem ser feitos em contas inativas");
+            throw new IllegalStateException("Depositos não podem ser feitos em contas inativas");
         this.saldo += valor;
     }
 
