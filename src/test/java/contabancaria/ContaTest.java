@@ -161,6 +161,14 @@ class ContaTest {
 
         assertThrows(IllegalArgumentException.class, () -> conta.sacar(-100));
     }
+
+    @Test
+    void sacar_contaInativa_LancaIllegalStateException(){
+        var conta = new Conta("João", 100.00);
+        conta.encerrar();
+
+        assertThrows(IllegalStateException.class, () -> conta.sacar(10));
+    }
     // =======================================================
     //  Testes para transferir
     //  Sugestão de testes:
