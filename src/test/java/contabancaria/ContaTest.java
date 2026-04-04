@@ -91,9 +91,6 @@ class ContaTest {
 
     // =======================================================
     //  Testes para depositar
-    //  Sugestão de testes:
-    //    - Depósito com valor negativo lança IllegalArgumentException
-    //    - Depósito em conta inativa lança IllegalStateException
     // =======================================================
 
     @Test
@@ -116,6 +113,14 @@ class ContaTest {
         var conta = new Conta("João");
 
         assertThrows(IllegalArgumentException.class, () -> conta.depositar(-10));
+    }
+
+    @Test
+    void depositar_contaInativa_LancaIllegalArgumentException(){
+        var conta = new Conta("João");
+        conta.encerrar();
+
+        assertThrows(IllegalArgumentException.class, () -> conta.depositar(10));
     }
 
     // =======================================================
