@@ -237,6 +237,6 @@ class ContaTest {
     void encerrar_saldoPositivo_lancaIllegalStateException(){
         var conta = new Conta("João", 100);
         
-        assertThrows(IllegalStateException.class, () -> conta.encerrar(););
+        assertThrows(IllegalStateException.class, () -> conta.encerrar());
     }
 }
