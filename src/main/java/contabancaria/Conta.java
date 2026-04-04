@@ -107,7 +107,7 @@ public class Conta {
     public void encerrar() {
         if(!this.isAtiva())
             throw new IllegalStateException("Conta já foi encerrada.");
-        if(this.saldo > 0)
+        if(this.saldo > 0.0)
             throw new IllegalStateException("Contas com saldo não podem ser encerradas");
         this.ativa = false;
     }

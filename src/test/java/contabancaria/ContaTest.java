@@ -220,15 +220,11 @@ class ContaTest {
     }
     // =======================================================
     //  Testes para encerrar
-    //  Sugestão de testes:
-    //    - Encerrar conta com saldo zero funciona
-    //    - Encerrar conta com saldo lança IllegalStateException
-    //    - Encerrar conta já inativa lança IllegalStateException
-    //    - Conta encerrada tem isAtiva() == false
     // =======================================================
     @Test
     void encerrar_saldoZero_encerraConta(){
-        var conta = new Conta("João");
+        var conta = new Conta("João", 0.0);
+        conta.encerrar();
 
         assertFalse(conta.isAtiva());
     }
@@ -242,7 +238,7 @@ class ContaTest {
 
      @Test
     void encerrar_contaEncerrada_lancaIllegalStateException(){
-        var conta = new Conta("João", 100);
+        var conta = new Conta("João");
         conta.encerrar();
         assertThrows(IllegalStateException.class, () -> conta.encerrar());
     }
