@@ -211,6 +211,15 @@ class ContaTest {
 
         assertThrows(IllegalStateException.class, () -> de.transferir(para, 1000));
     }
+
+    @Test
+    void transferir_contaDestinoInativa_lancaIllegalStateException(){
+        var de = new Conta("João");
+        var para = new Conta("Maria");
+        para.encerrar();
+        
+        assertThrows(IllegalStateException.class, () -> de.transferir(para, 1000));
+    }
     // =======================================================
     //  Testes para encerrar
     //  Sugestão de testes:
