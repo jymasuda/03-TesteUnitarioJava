@@ -111,6 +111,13 @@ class ContaTest {
         assertThrows(IllegalArgumentException.class, () -> conta.depositar(0));
     }
 
+    @Test
+    void depositar_ValorNegativo_LancaIllegalArgumentException(){
+        var conta = new Conta("João");
+
+        assertThrows(IllegalArgumentException.class, () -> conta.depositar(-10));
+    }
+
     // =======================================================
     //  Testes para sacar
     //  Sugestão de testes:
