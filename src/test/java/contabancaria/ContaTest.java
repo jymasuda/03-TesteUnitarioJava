@@ -229,7 +229,14 @@ class ContaTest {
     @Test
     void encerrar_saldoZero_encerraConta(){
         var conta = new Conta("João");
-        
+
         assertFalse(conta.isAtiva());
+    }
+
+    @Test
+    void encerrar_saldoPositivo_lancaIllegalStateException(){
+        var conta = new Conta("João", 100);
+        
+        assertThrows(IllegalStateException.class, () -> conta.encerrar(););
     }
 }
