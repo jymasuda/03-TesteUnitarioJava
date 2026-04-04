@@ -166,8 +166,6 @@ class ContaTest {
     // =======================================================
     //  Testes para transferir
     //  Sugestão de testes:
-    //    - Transferência com saldo insuficiente lança exceção
-    //    - Transferência com valor zero/negativo lança exceção
     //    - Transferência com conta origem inativa lança exceção
     //    - Transferência com conta destino inativa lança exceção
     // =======================================================
@@ -203,6 +201,15 @@ class ContaTest {
         var para = new Conta("Maria");
 
         assertThrows(IllegalArgumentException.class, () -> de.transferir(para, -100));
+    }
+
+    @Test
+    void transferir_contaEnvioInativa_lancaIllegalStateException(){
+        var de = new Conta("João");
+        de.encerrar();
+        var para = new Conta("Maria");
+
+        assertThrows(IllegalStateException.class, () -> de.transferir(para, 1000));
     }
     // =======================================================
     //  Testes para encerrar
