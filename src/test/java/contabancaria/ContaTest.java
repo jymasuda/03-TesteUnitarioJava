@@ -125,12 +125,6 @@ class ContaTest {
 
     // =======================================================
     //  Testes para sacar
-    //  Sugestão de testes:
-    //    - Saque com valor válido atualiza o saldo
-    //    - Saque com valor maior que saldo lança IllegalStateException
-    //    - Saque com valor zero lança IllegalArgumentException
-    //    - Saque com valor negativo lança IllegalArgumentException
-    //    - Saque em conta inativa lança IllegalStateException
     // =======================================================
 
     @Test
@@ -178,7 +172,15 @@ class ContaTest {
     //    - Transferência com conta origem inativa lança exceção
     //    - Transferência com conta destino inativa lança exceção
     // =======================================================
+    @Test
+    void transferir_transferenciaValida_atualizaSaldoContas(){
+        var de = new Conta("João", 100.00);
+        var para = new Conta("Maria");
 
+        de.transferir(para, 100);
+        assertEquals(0, de.getSaldo());
+        assertEquals(100, para.getSaldo());
+    }
 
     // =======================================================
     //  Testes para encerrar
