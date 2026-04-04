@@ -71,6 +71,8 @@ public class Conta {
     public void sacar(double valor) {
         if(valor == 0)
             throw new IllegalArgumentException("O valor do saque não deve ser 0");
+        if(valor < 0)
+            throw new IllegalArgumentException("O valor do saque não deve ser inferior a 0");
         if(valor > this.saldo)
             throw new IllegalStateException("O saldo não pode ser menor que valor a sacar");
         this.saldo -= valor;
